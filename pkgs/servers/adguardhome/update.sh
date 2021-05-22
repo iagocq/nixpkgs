@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p nix-prefetch jq
+#! nix-shell -i bash -p curl gnugrep nix-prefetch jq
 
 # This file is based on /pkgs/servers/gotify/update.sh
 
@@ -25,7 +25,7 @@ echo '{'        >> "$bins"
 
 for asset in $(curl --silent https://api.github.com/repos/AdguardTeam/AdGuardHome/releases/latest | jq -c '.assets[]') ; do
     url="$(jq -r '.browser_download_url' <<< "$asset")"
-    adg_system="$(egrep -o '(darwin|linux)_(386|amd64|arm64)' <<< "$url" || echo -n)"
+    adg_system="$(grep -Eo '(darwin|linux)_(386|amd64|arm64)' <<< "$url" || echo -n)"
     if [ -n "$adg_system" ]; then
         nix_system=${systems[$adg_system]}
         nix_src=$(nix-prefetch -s --output nix fetchurl --url $url)
@@ -35,3 +35,4 @@ done
 
 echo '}' >> "$bins"
 
+sed -i -r -e "s/version\s*?=\s*?.*?;/version = \"$version\";/" "$dirname/default.nix"

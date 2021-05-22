@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "adguardhome";
-  version = import ./version.nix;
+  version = "v0.106.3";
 
   src = (import ./bins.nix fetchurl).${system};
 
@@ -13,8 +13,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/AdguardTeam/AdGuardHome";
     description = "Network-wide ads & trackers blocking DNS server";
-    platforms = platforms.all;
+    platforms = platforms.unix;
     maintainers = with maintainers; [ numkem iagoq ];
-    license = licenses.gpl3;
+    license = licenses.gpl3Only;
   };
 }
