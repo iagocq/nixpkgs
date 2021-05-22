@@ -1,10 +1,10 @@
-{ lib, stdenv, fetchurl, system ? stdenv.targetPlatform }:
+{ lib, stdenv, fetchurl, fetchzip, system ? stdenv.targetPlatform }:
 
 stdenv.mkDerivation rec {
   pname = "adguardhome";
   version = "0.106.3";
 
-  src = (import ./bins.nix fetchurl).${system};
+  src = (import ./bins.nix { inherit fetchurl fetchzip; }).${system};
 
   installPhase = ''
     install -m755 -D ./AdGuardHome $out/bin/adguardhome
