@@ -12,7 +12,6 @@ latest_release=$(curl --silent https://api.github.com/repos/AdguardTeam/AdGuardH
 version=$(jq -r '.tag_name' <<<"$latest_release")
 
 echo "got version $version"
-echo "\"${version#v}\"" > "$dirname/version.nix"
 
 declare -A systems
 systems[linux_386]=i686-linux
@@ -35,4 +34,4 @@ done
 
 echo '}' >> "$bins"
 
-sed -i -r -e "s/version\s*?=\s*?.*?;/version = \"$version\";/" "$dirname/default.nix"
+sed -i -r -e "s/version\s*?=\s*?.*?;/version = \"${version#v}\";/" "$dirname/default.nix"
