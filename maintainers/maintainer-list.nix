@@ -5527,6 +5527,12 @@
     }];
     name = "Las Safin";
   };
+  l3af = {
+    email = "L3afMeAlon3@gmail.com";
+    github = "L3afMe";
+    githubId = 72546287;
+    name = "L3af";
+  };
   laikq = {
     email = "gwen@quasebarth.de";
     github = "laikq";
@@ -8117,6 +8123,12 @@
     githubId = 406946;
     name = "Valentin Lorentz";
   };
+  proofofkeags = {
+    email = "keagan.mcclelland@gmail.com";
+    github = "ProofOfKeags";
+    githubId = 4033651;
+    name = "Keagan McClelland";
+  };
   protoben = {
     email = "protob3n@gmail.com";
     github = "protoben";
@@ -9158,6 +9170,12 @@
     github = "sheenobu";
     githubId = 1443459;
     name = "Sheena Artrip";
+  };
+  sheepforce = {
+    email = "phillip.seeber@googlemail.com";
+    github = "sheepforce";
+    githubId = 16844216;
+    name = "Phillip Seeber";
   };
   sheganinans = {
     email = "sheganinans@gmail.com";
